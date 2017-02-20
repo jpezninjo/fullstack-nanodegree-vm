@@ -15,3 +15,6 @@ CREATE TABLE Matches(
     Winner   INT
 );
 
+insert into players (name) values ('chuck'), ('norris'),('garbage');
+
+insert into Matches (Player1, Player2, winner) values (1, 2, 1), (1, 2, 1);

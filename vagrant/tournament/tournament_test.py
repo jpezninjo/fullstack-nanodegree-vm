@@ -16,6 +16,7 @@ def testCount():
     """
     deleteMatches()
     deletePlayers()
+    
     c = countPlayers()
     if c == '0':
         raise TypeError(
@@ -23,12 +24,15 @@ def testCount():
     if c != 0:
         raise ValueError("After deletion, countPlayers should return zero.")
     print "1. countPlayers() returns 0 after initial deletePlayers() execution."
+    
     registerPlayer("Chandra Nalaar")
     c = countPlayers()
     if c != 1:
         raise ValueError(
             "After one player registers, countPlayers() should be 1. Got {c}".format(c=c))
     print "2. countPlayers() returns 1 after one player is registered."
+    
+    
     registerPlayer("Jace Beleren")
     c = countPlayers()
     if c != 2:
@@ -47,10 +51,13 @@ def testStandingsBeforeMatches():
     Test to ensure players are properly represented in standings prior
     to any matches being reported.
     """
+
     deleteMatches()
     deletePlayers()
+
     registerPlayer("Melpomene Murray")
     registerPlayer("Randy Schwartz")
+    
     standings = playerStandings()
     if len(standings) < 2:
         raise ValueError("Players should appear in playerStandings even before "
@@ -80,10 +87,15 @@ def testReportMatches():
     registerPlayer("Cathy Burton")
     registerPlayer("Diane Grant")
     standings = playerStandings()
+    id1 = id2 = id3 = id4 = 0
     [id1, id2, id3, id4] = [row[0] for row in standings]
     reportMatch(id1, id2)
     reportMatch(id3, id4)
+    
+
     standings = playerStandings()
+    
+    
     for (i, n, w, m) in standings:
         if m != 1:
             raise ValueError("Each player should have one match recorded.")
